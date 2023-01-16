@@ -1,5 +1,7 @@
-N, X = list(map(int, input().split()))
+N, X = map(int, input().split())
 A = list(map(int, input().split()))
+A_x =[]
 for i in A:
     if i < X:
-        print(i, end=" ")
+        A_x.append(i)
+print(*A_x)
