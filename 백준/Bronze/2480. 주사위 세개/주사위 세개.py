@@ -1,19 +1,11 @@
-a, b, c = input().split()
-A, B, C = int(a), int(b), int(c)
-sqe = [A, B, C]
-prise = 0
+A, B, C = list(map(int, input().split()))
 if A == B == C:
-    prise = 10000 + (A * 1000)
-    print(prise)
+    print(10000 + A * 1000)
 elif A == B:
-    prise = 1000 + (A * 100)
-    print(prise) 
-elif B == C: 
-    prise = 1000 + (B * 100)
-    print(prise)
+    print(1000 + A * 100)
+elif B == C:
+    print(1000 + B * 100)
 elif C == A:
-    prise = 1000 + (C * 100)
-    print(prise)
+    print(1000 + C * 100)
 else:
-    prise = max(sqe) * 100
-    print(prise)
+    print(max(A, B, C)*100)
