@@ -1,7 +1,6 @@
 cro_alp = ['c=', 'c-', 'dz=', 'd-', 'lj', 'nj', 's=', 'z=']
 alp = input()
 cnt = 0
-cnt_alp = {}
 for i in cro_alp:
     if i in alp:
         cnt += 1
