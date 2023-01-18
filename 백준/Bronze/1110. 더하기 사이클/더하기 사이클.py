@@ -1,10 +1,7 @@
-def cycle(x):
-    return (x % 10)*10 + ((x//10)+x%10)%10
-
 N = int(input())
-cnt = 1
-save = cycle(N)
-while save != N:
-    save = cycle(save)
+save_N, next_N, cnt = N, -1, 0
+while next_N != N:
+    next_N = (save_N%10)*10 + (save_N//10 + save_N%10)%10
+    save_N = next_N
     cnt += 1
 print(cnt)
