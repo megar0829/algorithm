@@ -1,11 +1,11 @@
-n = int(input())
-if n < 60:
-    print('F')
-elif n < 70:
-    print('D')
-elif n < 80:
-    print('C')
-elif n < 90:
-    print('B')
-elif n <= 100:
+T = int(input())
+if T >= 90:
     print('A')
+elif T >= 80:
+    print('B')
+elif T >= 70:
+    print('C')
+elif T >= 60:
+    print('D')
+else:
+    print('F')
