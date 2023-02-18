@@ -1,6 +1,6 @@
 while True:
     try:
-        a = input()
-        print(a)
+        word = input()
+        print(word)
     except:
         break
