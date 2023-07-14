@@ -1,6 +1,6 @@
 import sys
 input = sys.stdin.readline
-sys.setrecursionlimit(10000000)
+sys.setrecursionlimit(10 ** 6)
 
 n, m = map(int, input().split())
 matrix = [list(map(int, input().split())) for _ in range(n)]
