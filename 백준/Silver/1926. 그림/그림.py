@@ -12,8 +12,9 @@ def dfs(x, y):
     cnt += 1
     matrix[x][y] = 0
     for dx, dy in d:
-        if -1 < x + dx < n and -1 < y + dy < m and matrix[x + dx][y + dy]:
-            dfs(x + dx, y + dy)
+        nx, ny = x + dx, y + dy
+        if -1 < nx < n and -1 < ny < m and matrix[nx][ny]:
+            dfs(nx, ny)
     
 for i in range(n):
     for j in range(m):
