@@ -1,9 +1,12 @@
+import sys
+input = sys.stdin.readline
+
 K = int(input())
-lst = []
-for i in range(1, K+1):
-    number = int(input())
-    if number != 0:
-        lst.append(number)
+stack_lst = []
+for _ in range(K):
+    n = int(input())
+    if n != 0:
+        stack_lst.append(n)
     else:
-        lst.pop()
-print(sum(lst))
+        stack_lst.pop()
+print(sum(stack_lst))
