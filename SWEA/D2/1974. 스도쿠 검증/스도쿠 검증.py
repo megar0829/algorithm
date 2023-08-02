@@ -1,28 +1,27 @@
 T = int(input())
-for t in range(1, T + 1):
-    answer = 1
-    matrix = [list(map(int, input().split())) for _ in range(9)]
+for tc in range(1, T + 1):
+    arr = [list(map(int, input().split())) for _ in range(9)]
+    result = True
     for i in range(9):
-        s = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-        g = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        row_lst = list(range(1, 10))
+        col_lst = list(range(1, 10))
         for j in range(9):
-            if matrix[i][j] in g:
-                g.pop(g.index(matrix[i][j]))
-            if matrix[j][i] in s:
-                s.pop(s.index(matrix[j][i]))
-        if len(g) == 0 and len(s) == 0:
-            pass
-        else:
-            answer = 0
-            break
-    for a in range(0, 8, 3):
-        for b in range(0, 8, 3):
-            x = [1, 2, 3, 4, 5, 6, 7, 8, 9]   
-            for i in range(a, a+3):
-                for j in range(b, b+3):
-                    if matrix[i][j] in x:
-                        x.pop(x.index(matrix[i][j]))
-            if len(x) != 0:
-                answer = 0
-                break
-    print(f'#{t} {answer}')
+            if arr[i][j] in row_lst:
+                row_lst.remove(arr[i][j])
+            if arr[j][i] in col_lst:
+                col_lst.remove(arr[j][i])
+        if len(row_lst) or len(col_lst):
+            result = False
+    for i in range(0, 9, 3):
+        for j in range(0, 9, 3):
+            arr_3 = list(range(1, 10))
+            for k in range(3):
+                for l in range(3):
+                    if arr[i + k][j + l] in arr_3:
+                        arr_3.remove(arr[i + k][j + l])
+            if len(arr_3):
+                result = False
+    if result:
+        print(f'#{tc} {int(result)}')
+    else:
+        print(f'#{tc} {int(result)}')
