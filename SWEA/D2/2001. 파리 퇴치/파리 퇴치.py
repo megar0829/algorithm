@@ -1,16 +1,14 @@
 T = int(input())
-for t in range(1, T+1):
+for tc in range(1, T + 1):
     N, M = map(int, input().split())
-    matrix = [list(map(int, input().split())) for _ in range(N)]
-    sum_matrix = []
-    for i in range(N):
-        for j in range(N):
-            if i >= N-M+1 or j >= N-M+1:
-                pass
-            else:
-                sum_num = 0
-                for k in range(0, M):
-                    for l in range(0, M):
-                        sum_num += matrix[i+k][j+l]
-                sum_matrix.append(sum_num)
-    print(f'#{t} {max(sum_matrix)}')    
+    arr = [list(map(int, input().split())) for _ in range(N)]
+    result = 0
+    for i in range(N - (M - 1)):
+        for j in range(N - (M - 1)):
+            sum_kill = 0
+            for k in range(M):
+                for l in range(M):
+                    sum_kill += arr[i + k][j + l]
+            if result < sum_kill:
+                result = sum_kill
+    print(f'#{tc} {result}')
