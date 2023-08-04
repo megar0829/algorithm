@@ -1,14 +1,17 @@
 import sys
 input = sys.stdin.readline
-N = int(input())
-A_lst = list(map(int, input().split()))
-M = int(input())
-X_lst = list(map(int, input().split()))
-A_set = set(A_lst)
 
+
+N = int(input())
+arr = list(map(int, input().split()))
+arr_dict = {}
+for i in range(N):
+    arr_dict[arr[i]] = 1
+M = int(input())
+check = list(map(int, input().split()))
 
 for i in range(M):
-    if X_lst[i] in A_set:
-        print(1)
-    else:
+    try:
+        print(arr_dict[check[i]])
+    except KeyError:
         print(0)
