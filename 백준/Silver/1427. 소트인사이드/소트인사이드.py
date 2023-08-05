@@ -1,5 +1,3 @@
-import sys
-input = sys.stdin.readline
-N = input().rstrip()
-numbers = list(N)
-print(*sorted(numbers, reverse=True), sep='')
+N = list(input())
+N.sort(reverse=True)
+print(*N, sep='')
