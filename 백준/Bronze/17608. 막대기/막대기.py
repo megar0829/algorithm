@@ -1,11 +1,12 @@
 import sys
-N = int(sys.stdin.readline())
-h = [int(sys.stdin.readline()) for _ in range(N)]
-rev_h = list(reversed(h))
-cnt = 1
-right = h[N-1]
-for i in rev_h:
-    if i > right:
-        right = i
+input = sys.stdin.readline
+
+N = int(input())
+arr = [int(input()) for _ in range(N)]
+save_val = 0
+cnt = 0
+for i in range(N - 1, -1, -1):
+    if save_val < arr[i]:
+        save_val = arr[i]
         cnt += 1
 print(cnt)
