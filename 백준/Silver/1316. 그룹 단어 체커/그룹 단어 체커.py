@@ -1,21 +1,20 @@
-# import sys
-# sys.stdin = open('input.txt', 'r')
+import sys
+input = sys.stdin.readline
 
 N = int(input())
-group_text = 0
-for i in range(N):
+result = 0
+for _ in range(N):
     text = input()
+    check = []
     cnt = 0
-    group = []
-    for j in text:
-        if j not in group:
-            group.append(j)
+    for i in text:
+        if i not in check:
+            check.append(i)
+        elif i in check and check[-1] == i:
+            # check.append(i)
+            pass
         else:
-            if j != save_text:
-                group.pop(group.index(j))
-            else:
-                cnt += 1
-        save_text = j
-    if len(text) == len(group) + cnt:
-        group_text += 1        
-print(group_text)
+            cnt += 1
+    if cnt == 0:
+        result += 1
+print(result)
