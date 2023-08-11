@@ -1,20 +1,31 @@
-n = int(input())
-m = int(input())
-graph = [[] for _ in range(n + 1)]
-visited = [False] * (n + 1)
-total = 0
-for _ in range(m):
-    v1, v2 = map(int, input().split())
-    graph[v1].append(v2)
-    graph[v2].append(v1)
-start = 1
-stack = [start]
-visited[start] = True
-while stack:
-    cur = stack.pop()
-    for adj in graph[cur]:
-        if not visited[adj]:
-            visited[adj] = True
-            stack.append(adj)
-            total += 1
-print(total)
+import sys
+input = sys.stdin.readline
+
+V = int(input())
+E = int(input())
+arr = [[] for _ in range(V + 1)]
+visited = [False] * (V + 1)
+for _ in range(E):
+    v, w = map(int, input().split())
+    arr[v].append(w)
+    arr[w].append(v)
+stack = []
+n = 1
+visited[n] = True
+while True:
+    for w in range(len(arr[n])):
+        if len(arr[n]) and visited[arr[n][w]] == False:
+            stack.append(n)
+            n = arr[n].pop(w)
+            visited[n] = True
+            break
+    else:
+        if stack:
+            n = stack.pop()
+        else:
+            break
+result = 0
+for i in range(2, V + 1):
+    if visited[i] == True:
+        result += 1
+print(result)
