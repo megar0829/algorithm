@@ -1,5 +1,10 @@
+def fibo(n):
+    if n == 1:
+        return 1
+    elif n == 0:
+        return 1
+    return n * fibo(n - 1)
+
+
 N = int(input())
-result = 1
-for i in range(N, 1, -1):
-    result *= i
-print(result)
+print(fibo(N))
