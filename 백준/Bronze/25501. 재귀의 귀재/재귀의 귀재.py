@@ -1,17 +1,20 @@
-length=int(input())
-def isPalindrome(word, recursion):
-    if len(word) <= 1:
-        print(1, recursion)
+def recursion(s, l, r):
+    global cnt
+    cnt += 1
+    if l >= r:
+        return 1
+    elif s[l] != s[r]:
+        return 0
     else:
-        if word[0] == word[len(word)-1]:
-            recursion += 1
-            del word[len(word)-1]
-            del word[0]
-            return isPalindrome(word,recursion)
-        else:
-            print(0, recursion)
-    
+        return recursion(s, l + 1, r - 1)
 
-for _ in range(length):
-    word=list(input())
-    isPalindrome(word, 1)
+
+def isPalindrome(s):
+    return recursion(s, 0, len(s) - 1)
+
+
+N = int(input())
+for _ in range(N):
+    cnt = 0
+    text = input().strip('\n')
+    print(isPalindrome(text), cnt)
