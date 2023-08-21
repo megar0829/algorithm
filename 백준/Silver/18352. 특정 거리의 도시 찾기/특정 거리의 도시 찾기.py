@@ -13,15 +13,17 @@ def bfs(start, num):
         t = que.popleft()
         for w in arr[t]:
             if visited[w] == 0:
-                que.append(w)
-                visited[w] = visited[t] + 1
-                if visited[w] - 1 == num:
+                if visited[t] == num:
                     result.append(w)
+                    visited[w] = visited[t] + 1
+                else:
+                    que.append(w)
+                    visited[w] = visited[t] + 1
+
     if result:
         return sorted(result)
     result.append(-1)
     return result
-
 
 
 N, M, K, X = list(map(int, input().split()))
