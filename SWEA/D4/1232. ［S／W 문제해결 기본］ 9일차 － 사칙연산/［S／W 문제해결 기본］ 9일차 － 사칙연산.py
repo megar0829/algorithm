@@ -10,10 +10,11 @@ def cal(x, op, y):
 
 
 def postorder(n):
-    if str(arr[n]) in '+-*/':
+    if n:
         postorder(ch1[n])
         postorder(ch2[n])
-        arr[n] = cal(arr[ch1[n]], arr[n], arr[ch2[n]])
+        if str(arr[n]) in '+-*/':
+            arr[n] = cal(arr[ch1[n]], arr[n], arr[ch2[n]])
 
 
 for tc in range(1, 11):
