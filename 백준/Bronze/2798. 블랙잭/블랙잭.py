@@ -1,16 +1,12 @@
 N, M = map(int, input().split())
-card = list(map(int, input().split()))
-blackjack = set([])
-for i in card:
-    for j in card:
-        for k in card:
-            if i == j or j ==k or k == i:
-                pass
-            elif i == j == k:
-                pass
-            else:
-                if i + j + k > M:
-                    pass
-                else:
-                    blackjack.add(i + j + k)
-print(max(blackjack))
+arr = list(map(int, input().split()))
+
+max_card = 0
+for i in range(N - 2):
+    for j in range(i + 1, N - 1):
+        for k in range(j + 1, N):
+            save_card = arr[i] + arr[j] + arr[k]
+            if max_card < save_card <= M:
+                max_card = save_card
+
+print(max_card)
