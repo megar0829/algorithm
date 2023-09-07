@@ -11,11 +11,11 @@ for i in range(2, N + 1):
 
 ans = 1
 if M > 0:
-    tmp = 0
-    for i in range(M):
-        ans *= dp[lst[i] - 1 - tmp]
-        tmp = lst[i]
-    ans *= dp[N - tmp]
+    pre = 0
+    for j in range(M):
+        ans *= dp[lst[j] - 1 - pre]
+        pre = lst[j]
+    ans *= dp[N - pre]
 else:
     ans = dp[N]
 print(ans)
