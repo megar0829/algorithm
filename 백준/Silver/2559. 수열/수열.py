@@ -1,13 +1,13 @@
 N, K = map(int, input().split())
 arr = list(map(int, input().split()))
-max_sum = 0
-for i in range(K):
-    max_sum += arr[i]
-    
-save_sum = max_sum
-for i in range(K, N):
-    save_sum += arr[i] - arr[i - K]
-    if max_sum < save_sum:
-        max_sum = save_sum
 
-print(max_sum)
+# 누적합 배열 생성
+dp = [0] * (N + 1)
+
+for i in range(K):
+    dp[K] += arr[i]
+
+for i in range(K, N):
+    dp[i + 1] = dp[i] - arr[i - K] + arr[i]
+
+print(max(dp[K:]))
