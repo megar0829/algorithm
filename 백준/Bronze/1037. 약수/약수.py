@@ -1,3 +1,3 @@
-N = int(input())
-numbers = list(map(int, input().split()))
-print(max(numbers)*min(numbers))
+n = int(input())
+arr = list(map(int, input().split()))
+print(min(arr) * max(arr))
