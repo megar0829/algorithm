@@ -1,21 +1,33 @@
 import sys
 input = sys.stdin.readline
-import statistics
 
 N = int(input())
-numbers = sorted([int(input()) for _ in range(N)])
-mode_lst = sorted(statistics.multimode(numbers))
+arr = []
+arr_dict = {}
+sum_num = 0
+for _ in range(N):
+    num = int(input())
+    arr.append(num)
+    arr_dict.setdefault(num, 0)
+    arr_dict[num] += 1
+    sum_num += num
 
+# 1. 산술평균
+print(round(sum_num / N))
 
-print(round(statistics.mean(numbers)))
-print(statistics.median(numbers))
+# 2. 중앙값
+print(sorted(arr)[N // 2])
 
-if len(mode_lst) == 1:
-    print(mode_lst[0])
+# 3. 최빈값
+many_num = []
+max_val = max(arr_dict.values())
+for k, v in arr_dict.items():
+    if v == max_val:
+        many_num.append(k)
+if len(many_num) > 1:
+    print(sorted(many_num)[1])
 else:
-    print(mode_lst[1])
+    print(many_num[0])
 
-if len(numbers) == 1:
-    print(0)
-else:
-    print(numbers[-1] - numbers[0])
+# 4. 범위
+print(max(arr) - min(arr))
