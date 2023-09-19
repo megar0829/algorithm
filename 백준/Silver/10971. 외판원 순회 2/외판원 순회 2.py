@@ -2,16 +2,16 @@ import sys
 input = sys.stdin.readline
 
 
-def backTracking(start, i, sum):
+def backTracking(start, i, sum_val):
     global min_val
     if i == N - 1 and arr[start][0] != 0:
-        min_val = min(min_val, sum + arr[start][0])
+        min_val = min(min_val, sum_val + arr[start][0])
         return
     
     for j in range(N):
         if not visited[j] and arr[start][j]:
             visited[j] = 1
-            backTracking(j, i + 1, sum + arr[start][j])
+            backTracking(j, i + 1, sum_val + arr[start][j])
             visited[j] = 0
 
 
