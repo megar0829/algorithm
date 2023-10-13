@@ -4,25 +4,21 @@ input = sys.stdin.readline
 N = int(input())
 arr = sorted([int(input()) for _ in range(N)])
 
-max_d = 0
-flag = True
+sum_ab = set()
 
-while flag:
-    k = arr.pop()
-    N -= 1
-    for i in range(N):
-        left, right = i, N - 1
+for a in range(N):
+    for b in range(N):
+        sum_ab.add(arr[a] + arr[b])
 
-        while left <= right:
-            d = arr[i] + arr[left] + arr[right]
+result = 0
 
-            if d < k:
-                left += 1
-            elif d > k:
-                right -= 1
-            elif d == k:
-                max_d = d
-                flag = False
-                break
+for k in range(N - 1, -1, -1):
+    for c in range(N - 1, -1, -1):
+        minus_kc = arr[k] - arr[c]
+        if minus_kc in sum_ab:
+            result = minus_kc + arr[c]
+            break
+    if result:
+        break
 
-print(max_d)
+print(result)
