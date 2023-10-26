@@ -48,4 +48,4 @@ for dist, g1, g2 in edge:
     if union(g1, g2):
         result += dist
 
-print(format(round(result, 3), ".2f"))
+print(format(round(result, 2), ".2f"))
