@@ -1,32 +1,15 @@
-from collections import deque
+def dfs(x, y, idx):
+    global cnt
 
+    if idx == l + 1:
+        cnt += 1
+        return
 
-def delta(x, y):
-    que = deque([(x, y, 1)])
-    cnt = 0
+    for dx, dy in [(-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1)]:
+        nx, ny = (x + dx) % N, (y + dy) % M
 
-    while que:
-        x, y, idx = que.popleft()
-
-        if idx == l + 1:
-            cnt += 1
-            continue
-
-        for dx, dy in [(-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1)]:
-            nx, ny = x + dx, y + dy
-            if nx < 0:
-                nx = N - 1
-            elif nx >= N:
-                nx = 0
-
-            if ny < 0:
-                ny = M - 1
-            elif ny >= M:
-                ny = 0
-
-            if graph[nx][ny] == s[idx]:
-                que.append((nx, ny, idx + 1))
-    return cnt
+        if graph[nx][ny] == s[idx]:
+            dfs(nx, ny, idx + 1)
 
 
 N, M, K = map(int, input().split())
@@ -47,6 +30,8 @@ for s in god:
     for i in range(N):
         for j in range(M):
             if graph[i][j] == s[0]:
-                result += delta(i, j)
+                cnt = 0
+                dfs(i, j, 1)
+                result += cnt
 
     print(result)
