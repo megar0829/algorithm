@@ -10,6 +10,8 @@ public class Main {
 
     private static int[] sequence;
 
+    private static StringBuilder sb;
+
     public static void main(String[] args) throws IOException {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
@@ -41,20 +43,19 @@ public class Main {
 
         sequence = new int[N];
 
+        sb = new StringBuilder();
+
         dfs(0);
+
+        System.out.println(sb);
     }
 
     static void dfs(int idx) {
         if (idx == M) {
-            StringBuilder sb = new StringBuilder();
-
             for (int i = 0; i < M; i++) {
-                if (i != 0) {
-                    sb.append(' ');
-                }
-                sb.append(sequence[i]);
+                sb.append(sequence[i]).append(' ');
             }
-            System.out.println(sb);
+            sb.append('\n');
             return;
         }
 
