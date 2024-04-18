@@ -86,23 +86,6 @@ public class Main {
         }
     }
 
-    static boolean checkRow() {
-        for (int i = 0; i < 9; i++) {
-            int[] checkList = new int[9];
-
-            for (int j = 0; j < 9; j++) {
-                int n = arr[i][j];
-
-                if (checkList[n - 1] == 0) {
-                    checkList[n - 1] += 1;
-                } else {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
     static boolean checkRow(int r, int value) {
         for (int c = 0; c < 9; c++) {
             if (arr[r][c] == value) {
@@ -112,47 +95,10 @@ public class Main {
         return true;
     }
 
-    static boolean checkColumn() {
-        for (int i = 0; i < 9; i++) {
-            int[] checkList = new int[9];
-
-            for (int j = 0; j < 9; j++) {
-                int n = arr[j][i];
-
-                if (checkList[n - 1] == 0) {
-                    checkList[n - 1] += 1;
-                } else {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
     static boolean checkColumn(int c, int value) {
         for (int r = 0; r < 9; r++) {
             if (arr[r][c] == value) {
                 return false;
-            }
-        }
-        return true;
-    }
-    static boolean checkSquare() {
-        for (int sumRow = 0; sumRow < 3; sumRow++) {
-            for (int sumCol = 0; sumCol < 3; sumCol++) {
-                int[] checkList = new int[9];
-
-                for (int i = sumRow * 3; i < (sumRow + 1) * 3; i++) {
-                    for (int j = sumCol * 3; j < (sumCol + 1) * 3; j++) {
-                        int n = arr[j][i];
-
-                        if (checkList[n - 1] == 0) {
-                            checkList[n - 1] += 1;
-                        } else {
-                            return false;
-                        }
-                    }
-                }
             }
         }
         return true;
