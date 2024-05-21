@@ -46,12 +46,12 @@ public class Main {
                     && (arr.get(i - 1).silver == arr.get(i).silver)
                     && (arr.get(i - 1).bronze == arr.get(i).bronze)
             ) {
-                gradeNum--;
+                grade[i] = grade[i - 1];
+            } else {
+                grade[i] = gradeNum;
             }
-
-            grade[i] = gradeNum;
         }
-
+        
         for (int i = 0; i < N; i++) {
             if (arr.get(i).num == K) {
                 System.out.println(grade[i]);
