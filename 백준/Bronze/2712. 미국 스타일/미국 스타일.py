@@ -8,3 +8,4 @@ for _ in range(int(input())):
         print("%.4f %s" % (float(n)*0.2642, "g"))
     elif s == "g":
         print("%.4f %s" % (float(n)*3.7854, "l"))
+        
